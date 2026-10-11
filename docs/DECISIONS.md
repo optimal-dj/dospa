@@ -1,0 +1,46 @@
+# DOSPA — Décisions et questions ouvertes
+
+Statuts : **ouverte** (réponse attendue) · **provisoire** (valeur de travail appliquée, à confirmer) · **tranchée**.
+Bloquant : la phase qui ne peut pas être terminée sans réponse. Les autres travaux continuent avec la valeur provisoire.
+
+> Tout paramètre légal ou financier provisoire est configurable, versionné, désactivable et porte la mention
+> « À valider par un professionnel local ».
+
+| ID | Sujet | Question | Hypothèse / valeur provisoire | Bloquant | Statut |
+|---|---|---|---|---|---|
+| D-001 | Dépôt cible | Quel dépôt GitHub héberge DOSPA ? | Travail local ; push dès confirmation (`irasaas` vide ou nouveau dépôt `dospa`) | Phase 1 (push / CI) | ouverte |
+| D-002 | Marque | Signification officielle de « DOSPA » et identité visuelle | Libellé « DOSPA », sans logo, palette sobre neutre | non | ouverte |
+| D-003 | Langues MVP | Le cahier prévoit fr + en ; le brief exige fr, en, ar, so, aa dès le MVP | **5 langues dès la Phase 1** (le brief est plus récent et explicite) | non | provisoire |
+| D-004 | Stack | Valider la stack de `ARCHITECTURE.md` §4 | Monorepo pnpm, Next.js, PostgreSQL, Prisma, pg-boss, S3/MinIO | Phase 1 | ouverte |
+| D-005 | ORM | Prisma ou Drizzle | Prisma 7.x ; SQL brut versionné pour la RLS et les triggers | non | provisoire |
+| D-006 | Auth | Bibliothèque (Better Auth) ou implémentation interne sur primitives éprouvées | Choix final en Phase 1 après revue : sessions en base, Argon2id (`@node-rs/argon2`), TOTP (`otplib`) ; RBAC et tenant toujours internes | non | provisoire |
+| D-007 | Multi-tenant | Isolation | Base partagée + `tenant_id` + RLS PostgreSQL + tests d'isolation | non | provisoire |
+| D-008 | Langue par défaut / détection | Détecter `Accept-Language` ? | Défaut `fr` ; **pas** de détection automatique (prévisible) ; changement via sélecteur, profil, défaut tenant ou variable plateforme `DEFAULT_LOCALE` | non | provisoire |
+| D-009 | Fallback | Ordre de repli d'une clé manquante | Toujours vers `fr` (langue source), journalisé, jamais de clé brute | non | provisoire |
+| D-010 | Chiffres en arabe | Chiffres arabes-indiens (١٢٣) ou latins (123) dans l'interface et les bulletins ? | **Latins** (`ar-DJ-u-nu-latn`) pour la cohérence avec matricules et montants ; paramétrable par tenant | non | ouverte |
+| D-011 | Formatage afar | Node/ICU n'a pas de données CLDR pour `aa` (constaté : repli `en-US`) | Nombres et devise au format `fr-DJ` ; dates numériques `JJ/MM/AAAA` ; noms de mois et de jours depuis les ressources `aa` (à réviser) ; pluriel `one/other` | non | provisoire |
+| D-012 | Relecture linguistique | Qui relit l'arabe, le somali et l'afar (et les termes RH/paie en anglais) ? | Brouillons produits par l'équipe dev, tous marqués **« à réviser »** dans le registre qualité | non (bloque la mention « validé ») | ouverte |
+| D-013 | Barème ITS | Barème, méthode, abattements et seuils applicables au secteur privé | **Aucune valeur réelle en dur**. Démonstration avec des tranches **fictives** marquées comme telles ; calcul ITS désactivé en production tant que `non_valide` | Phase 5 (production) | ouverte |
+| D-014 | CNSS | Ventilation exacte par branche (prestations familiales, maladie, AT, retraite), plafonds d'assiette, arrondis | Valeurs de démonstration du cahier : total 21,7 % = 15,7 % employeur + 6 % salarié (source : cnss.dj, *non validé*) ; branches créées, taux par branche à saisir ; aucun plafond par défaut | Phase 5 (production) | ouverte |
+| D-015 | Congés payés | Règle d'acquisition | 2,5 jours ouvrables par mois de service effectif (cahier, art. 99 du Code du travail consulté), modifiable, « à confirmer selon le régime applicable » | non | provisoire |
+| D-016 | Heures supplémentaires | Seuils et majorations | Règle configurable **sans taux par défaut** (désactivée) jusqu'à confirmation | Phase 3/5 (calcul des majorations) | ouverte |
+| D-017 | Arrondis de paie | Méthode d'arrondi en DJF | Entier DJF, arrondi au plus proche (demi vers le haut) par ligne ; paramétrable | non | provisoire |
+| D-018 | Pointeuses pilotes | Modèles exacts, firmware et mode de connexion disponibles pour les essais (ZKTeco, Hikvision, Dahua) | Contrat + simulateur + import CSV ; connecteurs réels seulement sur matériel ou documentation officielle disponible | Phase 7 (connecteurs réels) | ouverte |
+| D-019 | BODER | Modèles, firmware, SDK/API, protocole, format d'événements, accès à un appareil réel | Adaptateur abstrait + liste des informations requises ; aucun protocole supposé | Phase 7 (BODER) | ouverte |
+| D-020 | Hébergement | Hébergeur, localisation des données, objectifs de disponibilité, RPO/RTO, chiffrement des documents | Conception agnostique (conteneurs + PostgreSQL managé + S3) | mise en production | ouverte |
+| D-021 | Banques | Banques et formats de virement | Système de modèles + un modèle CSV générique ; aucun format bancaire réel supposé | Phase 6 (formats réels) | ouverte |
+| D-022 | Contrats MVP | Types de contrats et de salariés inclus | CDI, CDD, temps partiel, journalier + types configurables ; salaire mensuel, journalier, horaire | non | provisoire |
+| D-023 | Volumétrie | Nombre de clients, salariés et pointeuses en phase pilote | Hypothèse de dimensionnement : 50 tenants, 5 000 salariés, 200 pointeuses | non | provisoire |
+| D-024 | Séparation des tâches | Le préparateur peut-il approuver sa propre paie ? | Non, par défaut ; désactivable par tenant avec trace d'audit | non | provisoire |
+| D-025 | Conservation des données | Durées de conservation, export et suppression | Aucune suppression automatique ; politique configurable par tenant ; à valider avec chaque client | non | ouverte |
+| D-026 | Charges brutes des pointeuses | Stocker la charge brute ? | Oui, chiffrée (AES-256-GCM, clé hors base) ; durée de conservation configurable | non | provisoire |
+| D-027 | Moteur PDF | Bibliothèque PDF | HTML → PDF via Chromium (Playwright) dans le worker, pour un rendu arabe et RTL fiable | non | provisoire |
+| D-028 | E-mails | Fournisseur d'envoi (réinitialisation, notifications) | SMTP configurable ; Mailpit en local | mise en production | ouverte |
+| D-029 | Images Docker | Docker Hub limite les téléchargements anonymes (429 constaté dans l'environnement de dev) | Images officielles via le miroir `public.ecr.aws/docker/library/*` dans Compose et la CI | non | provisoire |
+| D-030 | Langue des bulletins | Que faire si la traduction « paie » d'une langue n'est pas validée ? | Bulletin proposé uniquement dans les langues dont le namespace `payroll` est `valide` ; sinon en `fr`, avec une explication | non | provisoire |
+| D-031 | Versions | Politique de versions | Dernière version stable ; éviter une majeure de moins de 3 mois si la précédente est supportée ; versions exactes dans le lockfile, Node 22 LTS | non | provisoire |
+| D-032 | Rôles | Le brief liste 7 rôles, le cahier 9 (+ administrateur plateforme, support) | Union des deux : 7 rôles tenant + rôles plateforme hors tenant | non | provisoire |
+
+## Journal
+
+- Phase 0 : création du registre.
