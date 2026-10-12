@@ -1,0 +1,69 @@
+{
+  "users": {
+    "title": "Users",
+    "empty": "No users.",
+    "revokeSessions": "Sign out their sessions",
+    "columns": {
+      "name": "Name",
+      "email": "Email",
+      "roles": "Roles",
+      "mfa": "2FA",
+      "status": "Status"
+    },
+    "status": {
+      "active": "Active",
+      "disabled": "Disabled"
+    }
+  },
+  "roles": {
+    "title": "Roles and permissions",
+    "description": "System roles for this client. Editing custom roles comes in a later phase.",
+    "mfaRequired": "2FA required",
+    "summary": "{permissions, plural, one {# permission} other {# permissions}} · {members, plural, =0 {no members} one {# member} other {# members}}",
+    "names": {
+      "tenant_admin": "Client administrator",
+      "hr": "Human resources",
+      "payroll_manager": "Payroll manager",
+      "payroll_approver": "Payroll approver",
+      "manager": "Manager",
+      "employee": "Employee",
+      "auditor": "Auditor"
+    }
+  },
+  "modules": {
+    "settings": "Settings",
+    "organizations": "Organization",
+    "users": "Users",
+    "roles": "Roles",
+    "audit": "Audit",
+    "employees": "Employees",
+    "documents": "Documents",
+    "compensation": "Compensation",
+    "schedules": "Schedules",
+    "attendance": "Attendance",
+    "leave": "Leave",
+    "payroll": "Payroll",
+    "payroll_rules": "Payroll rules",
+    "reports": "Reports",
+    "exports": "Exports",
+    "devices": "Time clocks"
+  },
+  "audit": {
+    "title": "Audit log",
+    "empty": "No events recorded.",
+    "system": "System",
+    "columns": {
+      "date": "Date",
+      "actor": "Actor",
+      "action": "Action",
+      "ip": "IP address"
+    },
+    "actions": {
+      "user_login": "Sign-in",
+      "user_logout": "Sign-out",
+      "user_mfa_enabled": "Two-step verification enabled",
+      "user_password_reset": "Password reset",
+      "user_sessions_revoked": "User sessions signed out"
+    }
+  }
+}

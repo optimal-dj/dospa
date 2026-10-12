@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/noto-sans';
+@import '@fontsource-variable/noto-sans-arabic';
+
+@theme {
+  --font-sans: 'Noto Sans Variable', system-ui, sans-serif;
+  --font-arabic: 'Noto Sans Arabic Variable', 'Noto Sans Variable', system-ui, sans-serif;
+  --color-brand-50: oklch(0.97 0.02 250);
+  --color-brand-100: oklch(0.93 0.04 250);
+  --color-brand-600: oklch(0.5 0.15 255);
+  --color-brand-700: oklch(0.43 0.14 255);
+  --color-brand-900: oklch(0.28 0.08 255);
+}
+
+html {
+  font-family: var(--font-sans);
+}
+html[lang='ar'] {
+  font-family: var(--font-arabic);
+  /* L'arabe a besoin d'un interlignage plus grand. */
+  line-height: 1.7;
+}
+
+/* Icônes directionnelles (flèches, chevrons) : retournées en RTL. */
+[dir='rtl'] .icon-directional {
+  transform: scaleX(-1);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

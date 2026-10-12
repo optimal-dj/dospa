@@ -1,0 +1,13 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome, <b>{name}</b>.",
+  "phaseNotice": "Phase 1: foundation, languages, authentication and roles. Employee, attendance, leave and payroll modules arrive in later phases.",
+  "formats": {
+    "title": "Regional formats",
+    "description": "Display examples for your language. Currency and time zone remain those of the company.",
+    "money": "Amount",
+    "date": "Date",
+    "number": "Number",
+    "timezone": "Time zone"
+  }
+}

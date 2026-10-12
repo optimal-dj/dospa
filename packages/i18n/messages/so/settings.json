@@ -1,0 +1,22 @@
+{
+  "account": {
+    "title": "Akoonkayga"
+  },
+  "language": {
+    "title": "Luqadda bogga",
+    "description": "Doorashadani waxay khusaysaa akoonkaaga oo keliya. Ma beddesho lacagta, dalka ama xeerarka mushaharka shirkadda."
+  },
+  "security": {
+    "title": "Amniga",
+    "mfaEnabled": "Xaqiijinta laba-tallaabo waa shidan tahay.",
+    "mfaDisabled": "Xaqiijinta laba-tallaabo ma shidna."
+  },
+  "sessions": {
+    "title": "Fadhiyada firfircoon",
+    "revokeOthers": "Xir fadhiyada kale",
+    "revoke": "Xir",
+    "current": "Fadhigan",
+    "unknownDevice": "Qalab aan la aqoon",
+    "lastSeen": "Dhaqdhaqaaqii ugu dambeeyay: {date}"
+  }
+}

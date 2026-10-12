@@ -1,0 +1,30 @@
+{
+  "name": "@dospa/db",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./seed-helpers": "./src/seed-helpers.ts",
+    "./env": "./src/env.ts"
+  },
+  "scripts": {
+    "generate": "prisma generate",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy && tsx scripts/bootstrap-roles.ts",
+    "seed": "tsx scripts/seed.ts",
+    "reset": "prisma migrate reset --force && tsx scripts/bootstrap-roles.ts && tsx scripts/seed.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@dospa/domain": "workspace:*",
+    "@dospa/security": "workspace:*",
+    "@prisma/adapter-pg": "7.10.0",
+    "@prisma/client": "7.10.0",
+    "dotenv": "^17.4.2",
+    "pg": "^8.23.1",
+    "prisma": "7.10.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1"
+  }
+}

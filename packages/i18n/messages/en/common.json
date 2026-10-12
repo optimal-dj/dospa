@@ -1,0 +1,26 @@
+{
+  "appName": "DOSPA",
+  "tagline": "HR, attendance and payroll management",
+  "loading": "Loading…",
+  "language": "Language",
+  "skipToContent": "Skip to main content",
+  "demoNotice": "Demo environment: all data is fictitious.",
+  "legalNotice": "Legal and payroll parameters must be validated by a local professional before any production use.",
+  "actions": "Actions",
+  "yes": "Yes",
+  "no": "No",
+  "backHome": "Back to home",
+  "notFound": {
+    "title": "Page not found",
+    "description": "The requested page does not exist or has been moved."
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "Please try again in a moment. If the problem persists, contact your administrator.",
+    "retry": "Try again"
+  },
+  "forbidden": {
+    "title": "Access denied",
+    "description": "You do not have permission to view this page."
+  }
+}

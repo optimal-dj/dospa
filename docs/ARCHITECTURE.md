@@ -57,24 +57,24 @@ worker.
 
 ## 4. Choix techniques
 
-| Domaine | Choix proposé | Raison | Décision |
-|---|---|---|---|
-| Langage | TypeScript (mode strict) | Exigé par le brief | — |
-| Front et API | Next.js (App Router), React | Exigé ; un seul déploiement UI + API | D-004 |
-| UI | Tailwind CSS v4 (utilitaires logiques), composants Radix/shadcn | Radix gère `dir` (DirectionProvider) et l'accessibilité clavier | D-004 |
-| i18n | `next-intl` (segment `/{locale}`, messages ICU, clés typées) | Routage par locale, ICU, pluriels, formatage | D-008, D-009 |
-| Base de données | PostgreSQL 16+ | Exigé ; RLS, `timestamptz`, `numeric` | — |
-| ORM / migrations | Prisma 7.x (migrations SQL versionnées) + SQL brut pour la RLS et les triggers | Maturité, migrations explicites | D-005 |
-| Validation | Zod (partagée client/serveur) | Une seule source pour la validation et OpenAPI | — |
-| OpenAPI | `@asteasolutions/zod-to-openapi` → `/api/v1/openapi.json` + page de documentation | Spécification générée depuis le code | — |
-| Auth | Sessions en base (cookie opaque httpOnly), Argon2id, TOTP pour les comptes privilégiés | Révocation, MFA ; voir §7 | D-006 |
-| Tâches de fond | `pg-boss` (file dans PostgreSQL) | Aucune infrastructure supplémentaire (pas de Redis) | — |
-| Fichiers | API S3 (MinIO en local), URL présignées courtes après contrôle d'autorisation | Compatible S3 exigé | — |
-| PDF | HTML → PDF via Chromium (Playwright) dans le worker | Rendu correct de l'arabe (mise en forme, RTL) et des scripts latins | D-027 |
-| Exports | CSV (écriture maison, BOM UTF-8) et XLSX (librairie à figer en Phase 6) | — | — |
-| Tests | Vitest (unitaires et intégration sur un vrai PostgreSQL), Playwright (E2E), axe-core (accessibilité de base) | — | — |
-| Dev local | Docker Compose : postgres, minio, mailpit | — | D-029 |
-| CI | GitHub Actions : lint, typecheck, i18n:check, tests, build, E2E | — | — |
+| Domaine          | Choix proposé                                                                                                | Raison                                                              | Décision     |
+| ---------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | ------------ |
+| Langage          | TypeScript (mode strict)                                                                                     | Exigé par le brief                                                  | —            |
+| Front et API     | Next.js (App Router), React                                                                                  | Exigé ; un seul déploiement UI + API                                | D-004        |
+| UI               | Tailwind CSS v4 (utilitaires logiques), composants Radix/shadcn                                              | Radix gère `dir` (DirectionProvider) et l'accessibilité clavier     | D-004        |
+| i18n             | `next-intl` (segment `/{locale}`, messages ICU, clés typées)                                                 | Routage par locale, ICU, pluriels, formatage                        | D-008, D-009 |
+| Base de données  | PostgreSQL 16+                                                                                               | Exigé ; RLS, `timestamptz`, `numeric`                               | —            |
+| ORM / migrations | Prisma 7.x (migrations SQL versionnées) + SQL brut pour la RLS et les triggers                               | Maturité, migrations explicites                                     | D-005        |
+| Validation       | Zod (partagée client/serveur)                                                                                | Une seule source pour la validation et OpenAPI                      | —            |
+| OpenAPI          | `@asteasolutions/zod-to-openapi` → `/api/v1/openapi.json` + page de documentation                            | Spécification générée depuis le code                                | —            |
+| Auth             | Sessions en base (cookie opaque httpOnly), Argon2id, TOTP pour les comptes privilégiés                       | Révocation, MFA ; voir §7                                           | D-006        |
+| Tâches de fond   | `pg-boss` (file dans PostgreSQL)                                                                             | Aucune infrastructure supplémentaire (pas de Redis)                 | —            |
+| Fichiers         | API S3 (MinIO en local), URL présignées courtes après contrôle d'autorisation                                | Compatible S3 exigé                                                 | —            |
+| PDF              | HTML → PDF via Chromium (Playwright) dans le worker                                                          | Rendu correct de l'arabe (mise en forme, RTL) et des scripts latins | D-027        |
+| Exports          | CSV (écriture maison, BOM UTF-8) et XLSX (librairie à figer en Phase 6)                                      | —                                                                   | —            |
+| Tests            | Vitest (unitaires et intégration sur un vrai PostgreSQL), Playwright (E2E), axe-core (accessibilité de base) | —                                                                   | —            |
+| Dev local        | Docker Compose : postgres, minio, mailpit                                                                    | —                                                                   | D-029        |
+| CI               | GitHub Actions : lint, typecheck, i18n:check, tests, build, E2E                                              | —                                                                   | —            |
 
 Les versions exactes sont figées en Phase 1 (lockfile). Règle : version stable ; on évite une majeure sortie depuis moins de
 trois mois si la précédente reste supportée (D-031).
@@ -116,7 +116,7 @@ trois mois si la précédente reste supportée (D-031).
 - Locales : `fr` (source et défaut), `en`, `ar` (RTL), `so`, `aa`. Les routes sont toujours préfixées (`/fr/...`).
 - **Résolution de la langue** : segment d'URL > préférence du profil (utilisateur connecté) > cookie `NEXT_LOCALE` (visiteur)
   > langue par défaut du tenant > `fr`. La préférence utilisateur est stockée dans `user_preferences`, séparée des paramètres du
-  tenant. La langue ne modifie jamais la devise, le pays, le fuseau horaire ni les règles de paie de l'organisation.
+  > tenant. La langue ne modifie jamais la devise, le pays, le fuseau horaire ni les règles de paie de l'organisation.
 - **Sélecteur de langue** : élément accessible (label, `lang` sur chaque option, utilisable au clavier). Il conserve la route
   courante et les paramètres non sensibles.
 - **Messages** : `packages/i18n/messages/{locale}/{namespace}.json` (common, navigation, auth, employees, attendance, leave,
@@ -151,6 +151,7 @@ rubrique, cotisation, retenue, bulletin ; paramètre réglementaire versionné ;
 comptable, historique de génération).
 
 Règles transverses :
+
 - Identifiants UUID v7. Horodatages `timestamptz` en UTC. Fuseau de l'organisation stocké (`Africa/Djibouti` par défaut).
   Pour un pointage, on conserve aussi l'heure locale source et le fuseau interprété.
 - **Montants** : entiers en unité mineure de la devise (`bigint`) + code devise. Le DJF a 0 décimale (ISO 4217). Les taux sont

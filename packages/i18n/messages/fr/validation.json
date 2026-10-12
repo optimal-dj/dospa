@@ -1,0 +1,9 @@
+{
+  "required": "Ce champ est obligatoire.",
+  "email_invalid": "Adresse e-mail invalide.",
+  "password_too_short": "Le mot de passe doit contenir au moins {min} caractères.",
+  "password_too_long": "Le mot de passe doit contenir au plus {max} caractères.",
+  "password_mismatch": "Les mots de passe ne correspondent pas.",
+  "mfa_code_invalid": "Code invalide.",
+  "locale_invalid": "Langue non prise en charge."
+}

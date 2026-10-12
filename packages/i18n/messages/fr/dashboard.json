@@ -1,0 +1,13 @@
+{
+  "title": "Tableau de bord",
+  "welcome": "Bienvenue, <b>{name}</b>.",
+  "phaseNotice": "Phase 1 : socle, langues, authentification et rôles. Les modules salariés, présence, congés et paie arrivent dans les phases suivantes.",
+  "formats": {
+    "title": "Formats régionaux",
+    "description": "Exemples d’affichage selon votre langue. La devise et le fuseau horaire restent ceux de l’entreprise.",
+    "money": "Montant",
+    "date": "Date",
+    "number": "Nombre",
+    "timezone": "Fuseau horaire"
+  }
+}

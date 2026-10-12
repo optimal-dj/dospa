@@ -1,0 +1,69 @@
+{
+  "users": {
+    "title": "Isticmaalayaasha",
+    "empty": "Ma jiraan isticmaalayaal.",
+    "revokeSessions": "Xir fadhiyadiisa",
+    "columns": {
+      "name": "Magaca",
+      "email": "Iimaylka",
+      "roles": "Doorarka",
+      "mfa": "2FA",
+      "status": "Xaaladda"
+    },
+    "status": {
+      "active": "Firfircoon",
+      "disabled": "La joojiyay"
+    }
+  },
+  "roles": {
+    "title": "Doorarka iyo oggolaanshaha",
+    "description": "Doorarka nidaamka ee macmiilkan. Wax-ka-beddelka doorarka gaarka ah wuxuu imanayaa waji dambe.",
+    "mfaRequired": "2FA waa qasab",
+    "summary": "{permissions, plural, one {# oggolaansho} other {# oggolaansho}} · {members, plural, =0 {xubin ma jirto} one {# xubin} other {# xubnood}}",
+    "names": {
+      "tenant_admin": "Maamulaha macmiilka",
+      "hr": "Shaqaalaha (HR)",
+      "payroll_manager": "Maamulaha mushaharka",
+      "payroll_approver": "Ansixiyaha mushaharka",
+      "manager": "Maareeye",
+      "employee": "Shaqaale",
+      "auditor": "Hanti-dhowr"
+    }
+  },
+  "modules": {
+    "settings": "Dejinta",
+    "organizations": "Ururka",
+    "users": "Isticmaalayaasha",
+    "roles": "Doorarka",
+    "audit": "Hanti-dhowrka",
+    "employees": "Shaqaalaha",
+    "documents": "Dukumentiyada",
+    "compensation": "Mushaharka iyo gunnooyinka",
+    "schedules": "Jadwallada",
+    "attendance": "Imaanshaha",
+    "leave": "Fasaxyada",
+    "payroll": "Mushaharka",
+    "payroll_rules": "Xeerarka mushaharka",
+    "reports": "Warbixinnada",
+    "exports": "Dhoofinta xogta",
+    "devices": "Qalabka diiwaangelinta"
+  },
+  "audit": {
+    "title": "Diiwaanka hanti-dhowrka",
+    "empty": "Wax dhacdo ah lama diiwaangelin.",
+    "system": "Nidaamka",
+    "columns": {
+      "date": "Taariikhda",
+      "actor": "Qofka sameeyay",
+      "action": "Ficilka",
+      "ip": "Cinwaanka IP"
+    },
+    "actions": {
+      "user_login": "Gelitaan",
+      "user_logout": "Ka bixid",
+      "user_mfa_enabled": "Xaqiijinta laba-tallaabo waa la daaray",
+      "user_password_reset": "Furaha sirta dib ayaa loo dejiyay",
+      "user_sessions_revoked": "Fadhiyada isticmaale waa la xiray"
+    }
+  }
+}

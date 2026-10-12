@@ -1,0 +1,69 @@
+{
+  "users": {
+    "title": "Xoqoysiisa",
+    "empty": "Xoqoysiisa mali.",
+    "revokeSessions": "Kay fadhiyo alfi",
+    "columns": {
+      "name": "Migaq",
+      "email": "Iimayl",
+      "roles": "Rollitte",
+      "mfa": "2FA",
+      "status": "Xaala"
+    },
+    "status": {
+      "active": "Taamitta",
+      "disabled": "Joojime"
+    }
+  },
+  "roles": {
+    "title": "Rollitte kee oggolaansho",
+    "description": "Gaddaasa tah nidaamih rollitte. Gaar rollitteh beddel waji ellecabol yamaata.",
+    "mfaRequired": "2FA faxximta",
+    "summary": "{permissions, plural, one {# oggolaansho} other {# oggolaansho}} · {members, plural, =0 {xubin mali} one {# xubin} other {# xubno}}",
+    "names": {
+      "tenant_admin": "Maamulak gaddaasitu",
+      "hr": "Taamoytu dabaqa (HR)",
+      "payroll_manager": "Mindaaqa maamulak",
+      "payroll_approver": "Mindaaqa ayyaaqisa",
+      "manager": "Abbaa",
+      "employee": "Taamoyta",
+      "auditor": "Kormeerak"
+    }
+  },
+  "modules": {
+    "settings": "Massagoyta",
+    "organizations": "Gaddaasa",
+    "users": "Xoqoysiisa",
+    "roles": "Rollitte",
+    "audit": "Kormeera",
+    "employees": "Taamoyta",
+    "documents": "Dokumentitte",
+    "compensation": "Mindaaqa kee gunno",
+    "schedules": "Wakti-uddayta",
+    "attendance": "Yamaate",
+    "leave": "Fiidu",
+    "payroll": "Mindaaqa",
+    "payroll_rules": "Mindaaqak seerito",
+    "reports": "Warsitte",
+    "exports": "Xogta ayyuqsa",
+    "devices": "Diiwaanih qalab"
+  },
+  "audit": {
+    "title": "Kormeerah diiwaana",
+    "empty": "Diiwaangelime dhacdo mali.",
+    "system": "Nidaam",
+    "columns": {
+      "date": "Taariikh",
+      "actor": "Abe num",
+      "action": "Abitto",
+      "ip": "IP cinwaana"
+    },
+    "actions": {
+      "user_login": "Culma",
+      "user_logout": "Ayyuqa",
+      "user_mfa_enabled": "Nammay-tallaabah xaqiijinta fakkiimeh",
+      "user_password_reset": "Sirrih fura qagis dejime",
+      "user_sessions_revoked": "Xoqoysih fadhiyo alfimeh"
+    }
+  }
+}

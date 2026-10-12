@@ -1,0 +1,11 @@
+{
+  "forbidden": "You do not have permission to perform this action.",
+  "validation": "Some information is invalid. Please check the form.",
+  "invalid_credentials": "Incorrect email address or password.",
+  "rate_limited": "Too many attempts. Please try again in a few minutes.",
+  "account_disabled": "This account is disabled. Contact your administrator.",
+  "no_tenant_access": "This account is not linked to any active company.",
+  "mfa_invalid": "Incorrect verification code.",
+  "reset_token_invalid": "This link is invalid or has expired. Request a new link.",
+  "unauthenticated": "Your session has expired. Please sign in again."
+}

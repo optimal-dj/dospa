@@ -1,0 +1,22 @@
+{
+  "account": {
+    "title": "Yi akoon"
+  },
+  "language": {
+    "title": "Bogih afa",
+    "description": "Doorashá tah ku akoon tekkeh. Gaddaasih lacag, baaxo hinnay mindaaqah seerito mabeddela."
+  },
+  "security": {
+    "title": "Ammaan",
+    "mfaEnabled": "Nammay-tallaabah xaqiijinta fakkiimeh.",
+    "mfaDisabled": "Nammay-tallaabah xaqiijinta mafakkiimin."
+  },
+  "sessions": {
+    "title": "Taamitta fadhiyo",
+    "revokeOthers": "Fadhiyo kale alfi",
+    "revoke": "Alfi",
+    "current": "Fadhi tah",
+    "unknownDevice": "Aaqoowwe qalab",
+    "lastSeen": "Ellecaboh dhaqdhaqaaq: {date}"
+  }
+}

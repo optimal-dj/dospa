@@ -1,0 +1,69 @@
+{
+  "users": {
+    "title": "Utilisateurs",
+    "empty": "Aucun utilisateur.",
+    "revokeSessions": "Fermer ses sessions",
+    "columns": {
+      "name": "Nom",
+      "email": "E-mail",
+      "roles": "Rôles",
+      "mfa": "2FA",
+      "status": "Statut"
+    },
+    "status": {
+      "active": "Actif",
+      "disabled": "Désactivé"
+    }
+  },
+  "roles": {
+    "title": "Rôles et permissions",
+    "description": "Rôles système du client. La modification des rôles personnalisés arrive dans une phase ultérieure.",
+    "mfaRequired": "2FA obligatoire",
+    "summary": "{permissions, plural, one {# permission} other {# permissions}} · {members, plural, =0 {aucun membre} one {# membre} other {# membres}}",
+    "names": {
+      "tenant_admin": "Administrateur client",
+      "hr": "Ressources humaines",
+      "payroll_manager": "Gestionnaire de paie",
+      "payroll_approver": "Approbateur de paie",
+      "manager": "Manager",
+      "employee": "Salarié",
+      "auditor": "Auditeur"
+    }
+  },
+  "modules": {
+    "settings": "Paramètres",
+    "organizations": "Organisation",
+    "users": "Utilisateurs",
+    "roles": "Rôles",
+    "audit": "Audit",
+    "employees": "Salariés",
+    "documents": "Documents",
+    "compensation": "Rémunération",
+    "schedules": "Horaires",
+    "attendance": "Présence",
+    "leave": "Congés",
+    "payroll": "Paie",
+    "payroll_rules": "Règles de paie",
+    "reports": "Rapports",
+    "exports": "Exports",
+    "devices": "Pointeuses"
+  },
+  "audit": {
+    "title": "Journal d’audit",
+    "empty": "Aucun événement enregistré.",
+    "system": "Système",
+    "columns": {
+      "date": "Date",
+      "actor": "Auteur",
+      "action": "Action",
+      "ip": "Adresse IP"
+    },
+    "actions": {
+      "user_login": "Connexion",
+      "user_logout": "Déconnexion",
+      "user_mfa_enabled": "Vérification en deux étapes activée",
+      "user_password_reset": "Mot de passe réinitialisé",
+      "user_sessions_revoked": "Sessions d’un utilisateur fermées"
+    }
+  }
+}

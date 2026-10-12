@@ -1,0 +1,9 @@
+{
+  "required": "Goobtan waa qasab.",
+  "email_invalid": "Cinwaanka iimaylku sax ma aha.",
+  "password_too_short": "Furaha sirtu waa inuu ahaadaa ugu yaraan {min} xaraf.",
+  "password_too_long": "Furaha sirtu waa inuusan ka badnaan {max} xaraf.",
+  "password_mismatch": "Furayaasha sirta isma laha.",
+  "mfa_code_invalid": "Koodku sax ma aha.",
+  "locale_invalid": "Luqaddan lama taageero."
+}

@@ -1,0 +1,11 @@
+{
+  "forbidden": "Ma haysatid oggolaansho aad ku samayso ficilkan.",
+  "validation": "Xogta qaar sax ma aha. Hubi foomka.",
+  "invalid_credentials": "Iimaylka ama furaha sirta waa khalad.",
+  "rate_limited": "Isku dayo aad u badan. Mar kale isku day dhowr daqiiqo kadib.",
+  "account_disabled": "Akoonkan waa la joojiyay. La xiriir maamulahaaga.",
+  "no_tenant_access": "Akoonkan kuma xirna shirkad firfircoon.",
+  "mfa_invalid": "Koodka xaqiijinta waa khalad.",
+  "reset_token_invalid": "Xiriiriyahan sax ma aha ama wuu dhacay. Codso xiriiriye cusub.",
+  "unauthenticated": "Fadhigaagu wuu dhacay. Mar kale gal."
+}

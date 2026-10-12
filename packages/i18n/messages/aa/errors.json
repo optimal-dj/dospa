@@ -1,0 +1,11 @@
+{
+  "forbidden": "Abitto tah abtaah oggolaansho mali.",
+  "validation": "Xogtak tu sax mayan. Foomka hubi.",
+  "invalid_credentials": "Iimayl hinnay sirrih fura dagoo kinni.",
+  "rate_limited": "Isku day kaxxa maggo. Daqiiqa lakal qagis yaaballe.",
+  "account_disabled": "Akoon tah joojime. Ku maamulak xiriir.",
+  "no_tenant_access": "Akoon tah taamitta gaddaasal maxiriirinna.",
+  "mfa_invalid": "Xaqiijinta koodka dagoo kinni.",
+  "reset_token_invalid": "Xiriiriye tah sax mayan hinnay waqti kaa bayeh. Haaya xiriiriye esser.",
+  "unauthenticated": "Ku fadhi dhammaatemeh. Qagis culi."
+}

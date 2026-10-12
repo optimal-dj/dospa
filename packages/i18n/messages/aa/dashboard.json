@@ -1,0 +1,13 @@
+{
+  "title": "Guddiga",
+  "welcome": "Nagay timteen, <b>{name}</b>.",
+  "phaseNotice": "Waji 1: aasaas, afitte, xaqiijinta kee rollitte. Taamoyta, yamaate, fiidu kee mindaaqah qaybitte wajiyo xiga lih yamaatan.",
+  "formats": {
+    "title": "Baaxoh qaabitte",
+    "description": "Ku afal muujinta tusaalooyin. Lacag kee waqtih aagga gaddaasih kinni.",
+    "money": "Qaddar",
+    "date": "Taariikh",
+    "number": "Tiro",
+    "timezone": "Waqtih aagga"
+  }
+}

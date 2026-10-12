@@ -1,0 +1,135 @@
+{
+  "$comment": "Statut de chaque fichier de traduction : source | a_reviser (traduction non relue par un locuteur natif) | revise | valide. Voir docs/TRANSLATIONS.md.",
+  "locales": {
+    "fr": {
+      "common": {
+        "status": "source"
+      },
+      "navigation": {
+        "status": "source"
+      },
+      "auth": {
+        "status": "source"
+      },
+      "dashboard": {
+        "status": "source"
+      },
+      "settings": {
+        "status": "source"
+      },
+      "admin": {
+        "status": "source"
+      },
+      "validation": {
+        "status": "source"
+      },
+      "errors": {
+        "status": "source"
+      }
+    },
+    "en": {
+      "common": {
+        "status": "a_reviser"
+      },
+      "navigation": {
+        "status": "a_reviser"
+      },
+      "auth": {
+        "status": "a_reviser"
+      },
+      "dashboard": {
+        "status": "a_reviser"
+      },
+      "settings": {
+        "status": "a_reviser"
+      },
+      "admin": {
+        "status": "a_reviser"
+      },
+      "validation": {
+        "status": "a_reviser"
+      },
+      "errors": {
+        "status": "a_reviser"
+      }
+    },
+    "ar": {
+      "common": {
+        "status": "a_reviser"
+      },
+      "navigation": {
+        "status": "a_reviser"
+      },
+      "auth": {
+        "status": "a_reviser"
+      },
+      "dashboard": {
+        "status": "a_reviser"
+      },
+      "settings": {
+        "status": "a_reviser"
+      },
+      "admin": {
+        "status": "a_reviser"
+      },
+      "validation": {
+        "status": "a_reviser"
+      },
+      "errors": {
+        "status": "a_reviser"
+      }
+    },
+    "so": {
+      "common": {
+        "status": "a_reviser"
+      },
+      "navigation": {
+        "status": "a_reviser"
+      },
+      "auth": {
+        "status": "a_reviser"
+      },
+      "dashboard": {
+        "status": "a_reviser"
+      },
+      "settings": {
+        "status": "a_reviser"
+      },
+      "admin": {
+        "status": "a_reviser"
+      },
+      "validation": {
+        "status": "a_reviser"
+      },
+      "errors": {
+        "status": "a_reviser"
+      }
+    },
+    "aa": {
+      "common": {
+        "status": "a_reviser"
+      },
+      "navigation": {
+        "status": "a_reviser"
+      },
+      "auth": {
+        "status": "a_reviser"
+      },
+      "dashboard": {
+        "status": "a_reviser"
+      },
+      "settings": {
+        "status": "a_reviser"
+      },
+      "admin": {
+        "status": "a_reviser"
+      },
+      "validation": {
+        "status": "a_reviser"
+      },
+      "errors": {
+        "status": "a_reviser"
+      }
+    }
+  }
+}

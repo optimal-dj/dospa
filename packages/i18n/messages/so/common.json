@@ -1,0 +1,26 @@
+{
+  "appName": "DOSPA",
+  "tagline": "Maamulka shaqaalaha, imaanshaha iyo mushaharka",
+  "loading": "Waa la soo rarayaa…",
+  "language": "Luqadda",
+  "skipToContent": "U gudub qaybta ugu muhiimsan",
+  "demoNotice": "Deegaan tijaabo ah: dhammaan xogtu waa mala-awaal.",
+  "legalNotice": "Halbeegyada sharciga iyo mushaharka waa in uu xirfadle maxalli ah xaqiijiyaa ka hor isticmaal dhab ah.",
+  "actions": "Ficillada",
+  "yes": "Haa",
+  "no": "Maya",
+  "backHome": "Ku noqo bogga hore",
+  "notFound": {
+    "title": "Bogga lama helin",
+    "description": "Bogga aad codsatay ma jiro ama waa la raray."
+  },
+  "error": {
+    "title": "Khalad ayaa dhacay",
+    "description": "Mar kale isku day wax yar kadib. Haddii dhibaatadu sii jirto, la xiriir maamulahaaga.",
+    "retry": "Isku day mar kale"
+  },
+  "forbidden": {
+    "title": "Gelitaanka waa la diiday",
+    "description": "Ma haysatid oggolaansho aad ku aragto boggan."
+  }
+}

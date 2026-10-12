@@ -1,0 +1,22 @@
+{
+  "account": {
+    "title": "Mon compte"
+  },
+  "language": {
+    "title": "Langue de l’interface",
+    "description": "Ce choix ne concerne que votre compte. Il ne modifie ni la devise, ni le pays, ni les règles de paie de l’entreprise."
+  },
+  "security": {
+    "title": "Sécurité",
+    "mfaEnabled": "Vérification en deux étapes activée.",
+    "mfaDisabled": "Vérification en deux étapes non activée."
+  },
+  "sessions": {
+    "title": "Sessions actives",
+    "revokeOthers": "Fermer les autres sessions",
+    "revoke": "Fermer",
+    "current": "Cette session",
+    "unknownDevice": "Appareil inconnu",
+    "lastSeen": "Dernière activité : {date}"
+  }
+}

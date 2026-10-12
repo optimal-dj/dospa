@@ -1,0 +1,13 @@
+{
+  "title": "Guddiga",
+  "welcome": "Ku soo dhawoow, <b>{name}</b>.",
+  "phaseNotice": "Wajiga 1: aasaaska, luqadaha, xaqiijinta iyo doorarka. Qaybaha shaqaalaha, imaanshaha, fasaxyada iyo mushaharka waxay imanayaan wajiyada xiga.",
+  "formats": {
+    "title": "Qaababka gobolka",
+    "description": "Tusaalooyin muujinta ah oo ku saleysan luqaddaada. Lacagta iyo aagga waqtigu waa kuwa shirkadda.",
+    "money": "Qaddarka",
+    "date": "Taariikhda",
+    "number": "Tirada",
+    "timezone": "Aagga waqtiga"
+  }
+}
