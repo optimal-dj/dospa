@@ -1,0 +1,276 @@
+// DOSPA — schéma Phase 1 (socle : tenants, identités, rôles, sessions, audit).
+// Règles : toute table métier porte tenant_id et une politique RLS (voir migrations SQL).
+// Aucune suppression en cascade sur les données métier : on archive.
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TenantStatus {
+  active
+  suspended
+  archived
+}
+
+enum UserStatus {
+  active
+  disabled
+}
+
+enum MembershipStatus {
+  active
+  disabled
+}
+
+enum ScopeType {
+  tenant
+  organization
+  establishment
+  department
+  team
+  self
+}
+
+enum LoginOutcome {
+  success
+  invalid_credentials
+  locked
+  rate_limited
+  mfa_failed
+  mfa_success
+  disabled
+}
+
+model Tenant {
+  id            String       @id @default(uuid(7)) @db.Uuid
+  name          String
+  slug          String       @unique
+  status        TenantStatus @default(active)
+  isDemo        Boolean      @default(false) @map("is_demo")
+  defaultLocale String       @default("fr") @map("default_locale")
+  countryCode   String       @default("DJ") @map("country_code") @db.Char(2)
+  currency      String       @default("DJF") @db.Char(3)
+  timezone      String       @default("Africa/Djibouti")
+  createdAt     DateTime     @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime     @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  organizations   Organization[]
+  memberships     Membership[]
+  roles           Role[]
+  roleAssignments RoleAssignment[]
+  auditLogs       AuditLog[]
+
+  @@map("tenant")
+}
+
+model Organization {
+  id            String    @id @default(uuid(7)) @db.Uuid
+  tenantId      String    @map("tenant_id") @db.Uuid
+  name          String
+  legalName     String?   @map("legal_name")
+  countryCode   String    @default("DJ") @map("country_code") @db.Char(2)
+  currency      String    @default("DJF") @db.Char(3)
+  timezone      String    @default("Africa/Djibouti")
+  defaultLocale String    @default("fr") @map("default_locale")
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime  @updatedAt @map("updated_at") @db.Timestamptz(6)
+  archivedAt    DateTime? @map("archived_at") @db.Timestamptz(6)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([tenantId, id])
+  @@index([tenantId])
+  @@map("organization")
+}
+
+model User {
+  id                String     @id @default(uuid(7)) @db.Uuid
+  email             String     @unique
+  displayName       String     @map("display_name")
+  passwordHash      String     @map("password_hash")
+  status            UserStatus @default(active)
+  mfaEnabled        Boolean    @default(false) @map("mfa_enabled")
+  mfaSecretEnc      String?    @map("mfa_secret_enc")
+  mfaRecoveryHashes String[]   @default([]) @map("mfa_recovery_hashes")
+  passwordChangedAt DateTime   @default(now()) @map("password_changed_at") @db.Timestamptz(6)
+  createdAt         DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  preference     UserPreference?
+  memberships    Membership[]
+  sessions       Session[]
+  resetTokens    PasswordResetToken[]
+
+  @@map("app_user")
+}
+
+/// Préférences personnelles, séparées des paramètres du tenant (la langue ne change ni devise, ni fuseau, ni règles).
+model UserPreference {
+  userId    String   @id @map("user_id") @db.Uuid
+  locale    String?
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_preference")
+}
+
+model Membership {
+  id        String           @id @default(uuid(7)) @db.Uuid
+  tenantId  String           @map("tenant_id") @db.Uuid
+  userId    String           @map("user_id") @db.Uuid
+  status    MembershipStatus @default(active)
+  createdAt DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  tenant      Tenant           @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  user        User             @relation(fields: [userId], references: [id], onDelete: Restrict)
+  assignments RoleAssignment[]
+
+  @@unique([tenantId, userId])
+  @@unique([tenantId, id])
+  @@index([userId])
+  @@map("membership")
+}
+
+/// Catalogue global des permissions, synchronisé depuis packages/domain.
+model Permission {
+  code   String @id
+  module String
+  action String
+
+  rolePermissions RolePermission[]
+
+  @@map("permission")
+}
+
+model Role {
+  id         String   @id @default(uuid(7)) @db.Uuid
+  tenantId   String   @map("tenant_id") @db.Uuid
+  code       String
+  isSystem   Boolean  @default(false) @map("is_system")
+  customName String?  @map("custom_name")
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt  DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  tenant      Tenant           @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  permissions RolePermission[]
+  assignments RoleAssignment[]
+
+  @@unique([tenantId, code])
+  @@unique([tenantId, id])
+  @@map("role")
+}
+
+model RolePermission {
+  tenantId       String @map("tenant_id") @db.Uuid
+  roleId         String @map("role_id") @db.Uuid
+  permissionCode String @map("permission_code")
+
+  role       Role       @relation(fields: [tenantId, roleId], references: [tenantId, id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionCode], references: [code], onDelete: Restrict)
+
+  @@id([roleId, permissionCode])
+  @@index([tenantId])
+  @@map("role_permission")
+}
+
+model RoleAssignment {
+  id           String    @id @default(uuid(7)) @db.Uuid
+  tenantId     String    @map("tenant_id") @db.Uuid
+  membershipId String    @map("membership_id") @db.Uuid
+  roleId       String    @map("role_id") @db.Uuid
+  scopeType    ScopeType @default(tenant) @map("scope_type")
+  scopeId      String?   @map("scope_id") @db.Uuid
+  createdById  String?   @map("created_by_id") @db.Uuid
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  tenant     Tenant     @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  membership Membership @relation(fields: [tenantId, membershipId], references: [tenantId, id], onDelete: Restrict)
+  role       Role       @relation(fields: [tenantId, roleId], references: [tenantId, id], onDelete: Restrict)
+
+  @@index([tenantId, membershipId])
+  @@map("role_assignment")
+}
+
+model Session {
+  id            String    @id @default(uuid(7)) @db.Uuid
+  tokenHash     String    @unique @map("token_hash")
+  userId        String    @map("user_id") @db.Uuid
+  tenantId      String?   @map("tenant_id") @db.Uuid
+  mfaVerifiedAt DateTime? @map("mfa_verified_at") @db.Timestamptz(6)
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  lastSeenAt    DateTime  @default(now()) @map("last_seen_at") @db.Timestamptz(6)
+  expiresAt     DateTime  @map("expires_at") @db.Timestamptz(6)
+  revokedAt     DateTime? @map("revoked_at") @db.Timestamptz(6)
+  revokedReason String?   @map("revoked_reason")
+  ipAddress     String?   @map("ip_address")
+  userAgent     String?   @map("user_agent")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@map("session")
+}
+
+model PasswordResetToken {
+  id        String    @id @default(uuid(7)) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  tokenHash String    @unique @map("token_hash")
+  expiresAt DateTime  @map("expires_at") @db.Timestamptz(6)
+  usedAt    DateTime? @map("used_at") @db.Timestamptz(6)
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@map("password_reset_token")
+}
+
+model LoginHistory {
+  id        String       @id @default(uuid(7)) @db.Uuid
+  userId    String?      @map("user_id") @db.Uuid
+  tenantId  String?      @map("tenant_id") @db.Uuid
+  outcome   LoginOutcome
+  ipAddress String?      @map("ip_address")
+  userAgent String?      @map("user_agent")
+  createdAt DateTime     @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  @@index([userId, createdAt])
+  @@index([tenantId, createdAt])
+  @@map("login_history")
+}
+
+/// Journal d'audit append-only (UPDATE/DELETE refusés par trigger).
+model AuditLog {
+  id          String   @id @default(uuid(7)) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  actorUserId String?  @map("actor_user_id") @db.Uuid
+  action      String
+  entityType  String?  @map("entity_type")
+  entityId    String?  @map("entity_id")
+  metadata    Json     @default("{}")
+  ipAddress   String?  @map("ip_address")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, createdAt(sort: Desc)])
+  @@index([tenantId, action])
+  @@map("audit_log")
+}
+
+/// Compteurs de limitation de débit (clés hachées, aucune donnée personnelle en clair).
+model RateLimitBucket {
+  key         String   @id
+  count       Int
+  windowStart DateTime @map("window_start") @db.Timestamptz(6)
+
+  @@map("rate_limit_bucket")
+}

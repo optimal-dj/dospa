@@ -1,0 +1,9 @@
+{
+  "required": "Goob tah faxximta.",
+  "email_invalid": "Iimaylih cinwaana sax mayan.",
+  "password_too_short": "Sirrih fura ugu yaraan {min} xarfi faxximta.",
+  "password_too_long": "Sirrih fura {max} xarfik mababbaxa.",
+  "password_mismatch": "Sirrih furayo itta mageyan.",
+  "mfa_code_invalid": "Koodka sax mayan.",
+  "locale_invalid": "Afa tah matageerimmo."
+}

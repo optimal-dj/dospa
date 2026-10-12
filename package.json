@@ -1,0 +1,39 @@
+{
+  "name": "dospa",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": ">=22.12 <23"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @dospa/web dev",
+    "build": "pnpm -r --if-present build",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "i18n:check": "pnpm --filter @dospa/i18n check",
+    "db:generate": "pnpm --filter @dospa/db generate",
+    "db:migrate": "pnpm --filter @dospa/db migrate:deploy",
+    "db:migrate:dev": "pnpm --filter @dospa/db migrate:dev",
+    "db:seed": "pnpm --filter @dospa/db seed",
+    "db:reset": "pnpm --filter @dospa/db reset",
+    "openapi:generate": "pnpm --filter @dospa/web openapi:generate",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "pnpm --filter @dospa/web test:e2e"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.5",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.1",
+    "vitest": "^4.1.11"
+  }
+}

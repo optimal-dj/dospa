@@ -1,0 +1,9 @@
+{
+  "required": "هذا الحقل إلزامي.",
+  "email_invalid": "البريد الإلكتروني غير صالح.",
+  "password_too_short": "يجب ألا تقل كلمة المرور عن {min} حرفًا.",
+  "password_too_long": "يجب ألا تزيد كلمة المرور على {max} حرفًا.",
+  "password_mismatch": "كلمتا المرور غير متطابقتين.",
+  "mfa_code_invalid": "الرمز غير صالح.",
+  "locale_invalid": "اللغة غير مدعومة."
+}

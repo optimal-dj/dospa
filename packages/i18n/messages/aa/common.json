@@ -1,0 +1,26 @@
+{
+  "appName": "DOSPA",
+  "tagline": "Taamoytu, yamaate kee mindaaqa maamula",
+  "loading": "Ugtuma…",
+  "language": "Afa",
+  "skipToContent": "Muhiim tanih qaybih gac",
+  "demoNotice": "Tijaabo deegaana: xogta inkih mala-awaal kinni.",
+  "legalNotice": "Seerih kee mindaaqah halbeegitte, dhab isticmaalak naharal, baaxok xirfadlé xaqiijiyam faxximta.",
+  "actions": "Abitte",
+  "yes": "Yeey",
+  "no": "Maleey",
+  "backHome": "Fanah gacitaa",
+  "notFound": {
+    "title": "Bogga mageyimmo",
+    "description": "Isin essertan bogga mayan hinnay, hinnaay raaraqeh."
+  },
+  "error": {
+    "title": "Dagoo ummaane yekke",
+    "description": "Daqiiqa lakal qagis yaaballe. Dhibaato tanim yaggifinnaay, isin maamulak xiriir.",
+    "retry": "Qagis yaaballe"
+  },
+  "forbidden": {
+    "title": "Culma diidime",
+    "description": "Bogga tah tableenih oggolaansho mali."
+  }
+}

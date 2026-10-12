@@ -1,0 +1,29 @@
+# Environnement de développement local uniquement. Ne pas utiliser en production.
+# Images via le miroir public.ecr.aws (Docker Hub limite les téléchargements anonymes, voir DECISIONS D-029).
+services:
+  postgres:
+    image: public.ecr.aws/docker/library/postgres:17-alpine
+    environment:
+      POSTGRES_USER: dospa_owner
+      POSTGRES_PASSWORD: dospa_owner_local_only
+      POSTGRES_DB: dospa
+    ports: ['5432:5432']
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U dospa_owner -d dospa']
+      interval: 5s
+      retries: 10
+  minio:
+    image: quay.io/minio/minio:RELEASE.2025-04-22T22-12-26Z
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: dospa_local
+      MINIO_ROOT_PASSWORD: dospa_local_only_change_me
+    ports: ['9000:9000', '9001:9001']
+    volumes: [miniodata:/data]
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports: ['1025:1025', '8025:8025']
+volumes:
+  pgdata:
+  miniodata:

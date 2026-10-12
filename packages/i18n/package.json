@@ -1,0 +1,19 @@
+{
+  "name": "@dospa/i18n",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./config": "./src/config.ts",
+    "./format": "./src/format.ts",
+    "./messages": "./src/messages.ts"
+  },
+  "scripts": {
+    "check": "tsx scripts/check.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@formatjs/icu-messageformat-parser": "^3.5.21",
+    "tsx": "^4.23.15"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "mainMenu": "Main menu",
+  "dashboard": "Dashboard",
+  "account": "My account",
+  "users": "Users",
+  "roles": "Roles and permissions",
+  "audit": "Audit log",
+  "logout": "Sign out"
+}

@@ -1,0 +1,9 @@
+{
+  "mainMenu": "Menu principal",
+  "dashboard": "Tableau de bord",
+  "account": "Mon compte",
+  "users": "Utilisateurs",
+  "roles": "Rôles et permissions",
+  "audit": "Journal d’audit",
+  "logout": "Se déconnecter"
+}

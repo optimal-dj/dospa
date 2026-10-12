@@ -1,0 +1,22 @@
+{
+  "account": {
+    "title": "My account"
+  },
+  "language": {
+    "title": "Interface language",
+    "description": "This choice only applies to your account. It does not change the company’s currency, country or payroll rules."
+  },
+  "security": {
+    "title": "Security",
+    "mfaEnabled": "Two-step verification is enabled.",
+    "mfaDisabled": "Two-step verification is not enabled."
+  },
+  "sessions": {
+    "title": "Active sessions",
+    "revokeOthers": "Sign out other sessions",
+    "revoke": "Sign out",
+    "current": "This session",
+    "unknownDevice": "Unknown device",
+    "lastSeen": "Last activity: {date}"
+  }
+}

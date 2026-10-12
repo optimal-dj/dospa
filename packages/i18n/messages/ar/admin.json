@@ -1,0 +1,69 @@
+{
+  "users": {
+    "title": "المستخدمون",
+    "empty": "لا يوجد مستخدمون.",
+    "revokeSessions": "إغلاق جلساته",
+    "columns": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "roles": "الأدوار",
+      "mfa": "التحقق بخطوتين",
+      "status": "الحالة"
+    },
+    "status": {
+      "active": "نشط",
+      "disabled": "معطّل"
+    }
+  },
+  "roles": {
+    "title": "الأدوار والصلاحيات",
+    "description": "أدوار النظام لهذا العميل. سيتوفر تعديل الأدوار المخصصة في مرحلة لاحقة.",
+    "mfaRequired": "التحقق بخطوتين إلزامي",
+    "summary": "{permissions, plural, zero {لا صلاحيات} one {صلاحية واحدة} two {صلاحيتان} few {# صلاحيات} many {# صلاحية} other {# صلاحية}} · {members, plural, zero {لا أعضاء} one {عضو واحد} two {عضوان} few {# أعضاء} many {# عضوًا} other {# عضو}}",
+    "names": {
+      "tenant_admin": "مسؤول العميل",
+      "hr": "الموارد البشرية",
+      "payroll_manager": "مسؤول الرواتب",
+      "payroll_approver": "معتمد الرواتب",
+      "manager": "مدير",
+      "employee": "موظف",
+      "auditor": "مدقق"
+    }
+  },
+  "modules": {
+    "settings": "الإعدادات",
+    "organizations": "المؤسسة",
+    "users": "المستخدمون",
+    "roles": "الأدوار",
+    "audit": "التدقيق",
+    "employees": "الموظفون",
+    "documents": "المستندات",
+    "compensation": "الأجور",
+    "schedules": "جداول الدوام",
+    "attendance": "الحضور",
+    "leave": "الإجازات",
+    "payroll": "الرواتب",
+    "payroll_rules": "قواعد الرواتب",
+    "reports": "التقارير",
+    "exports": "التصدير",
+    "devices": "أجهزة البصمة"
+  },
+  "audit": {
+    "title": "سجل التدقيق",
+    "empty": "لا توجد أحداث مسجلة.",
+    "system": "النظام",
+    "columns": {
+      "date": "التاريخ",
+      "actor": "المنفّذ",
+      "action": "الإجراء",
+      "ip": "عنوان IP"
+    },
+    "actions": {
+      "user_login": "تسجيل الدخول",
+      "user_logout": "تسجيل الخروج",
+      "user_mfa_enabled": "تفعيل التحقق بخطوتين",
+      "user_password_reset": "إعادة تعيين كلمة المرور",
+      "user_sessions_revoked": "إغلاق جلسات مستخدم"
+    }
+  }
+}

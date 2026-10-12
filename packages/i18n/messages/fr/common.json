@@ -1,0 +1,26 @@
+{
+  "appName": "DOSPA",
+  "tagline": "Gestion RH, présence et paie",
+  "loading": "Chargement…",
+  "language": "Langue",
+  "skipToContent": "Aller au contenu principal",
+  "demoNotice": "Environnement de démonstration : toutes les données sont fictives.",
+  "legalNotice": "Les paramètres légaux et de paie doivent être validés par un professionnel local avant toute utilisation en production.",
+  "actions": "Actions",
+  "yes": "Oui",
+  "no": "Non",
+  "backHome": "Retour à l’accueil",
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page demandée n’existe pas ou a été déplacée."
+  },
+  "error": {
+    "title": "Une erreur est survenue",
+    "description": "Réessayez dans un instant. Si le problème persiste, contactez votre administrateur.",
+    "retry": "Réessayer"
+  },
+  "forbidden": {
+    "title": "Accès refusé",
+    "description": "Vous n’avez pas la permission d’afficher cette page."
+  }
+}
