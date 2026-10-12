@@ -10,14 +10,12 @@ Plan : `docs/PLAN.md`. Décisions ouvertes : `docs/DECISIONS.md`.
 
 ## Commandes
 
-> Disponibles à partir de la Phase 1 (le dépôt ne contient encore que la documentation).
-
 | Commande                           | Rôle                                                                 |
 | ---------------------------------- | -------------------------------------------------------------------- |
 | `pnpm install`                     | Installer les dépendances (Node 22 LTS, pnpm via Corepack)           |
-| `docker compose up -d`             | PostgreSQL, MinIO, Mailpit en local                                  |
+| `docker compose up -d`             | PostgreSQL (et services annexes) en local                            |
 | `pnpm db:migrate` / `pnpm db:seed` | Migrations et données fictives                                       |
-| `pnpm dev`                         | Web + worker en développement                                        |
+| `pnpm dev`                         | Application web en développement                                     |
 | `pnpm lint`                        | ESLint (inclut : textes en dur interdits, CSS physique interdite)    |
 | `pnpm typecheck`                   | TypeScript strict sur tout le monorepo                               |
 | `pnpm i18n:check`                  | Clés manquantes ou inutilisées, variables ICU, syntaxe des 5 langues |
